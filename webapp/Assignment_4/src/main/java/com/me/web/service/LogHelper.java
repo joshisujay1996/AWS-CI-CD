@@ -12,6 +12,8 @@ public class LogHelper {
     Logger logger = Logger.getLogger("MyLog");
     FileHandler fh;
 
+
+    //@Value("${fileloc}")
     String logLocation="/opt/tomcat/logs/csye6225.log";
 
 
@@ -19,8 +21,17 @@ public class LogHelper {
         fh = new FileHandler(logLocation);
         logger.addHandler(fh);
         SimpleFormatter formatter = new SimpleFormatter();
-        fh.setFormatter(formatter);
+        fh.setFormatter(formatter);            // the following statement is used to log any messages
         logger.info(msg);
         fh.close();
     }
+
+    /*
+    public static void logErrorEntry(String msg) throws Exception{
+        fh = new FileHandler("/opt/tomcat/logs/csye6225.log");
+        logger.addHandler(fh);
+        SimpleFormatter formatter = new SimpleFormatter();
+        fh.setFormatter(formatter);            // the following statement is used to log any messages
+        logger.log(new Level(""),msg);
+    }*/
 }
